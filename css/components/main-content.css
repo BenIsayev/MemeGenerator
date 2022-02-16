@@ -20,7 +20,13 @@
 
 .main-gallery-container {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    /* grid-auto-rows: max-content; */
     gap: 10px;
+}
+
+.main-gallery-container>* {
+    display: flex;
+    align-items: center;
 }
 
 .main-editor {

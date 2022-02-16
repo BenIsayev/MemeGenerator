@@ -4,14 +4,18 @@ window.addEventListener("load", init)
 var gElCanvas = document.querySelector('canvas')
 var gCtx = gElCanvas.getContext('2d')
 var meme;
+var gImg;
+var gCurrId;
+var isFirstGen = true;
 var isMoving = false;
 
 function init() {
     renderGallery();
-    getMeme();
+    meme = getMeme();
     addEventListeners();
     renderKeyWords()
 }
+
 
 function renderKeyWords() {
     var keyWords = getKeyWords()
@@ -34,24 +38,34 @@ function renderGallery() {
 }
 
 function renderEditor(id) {
-    meme.selectedImgId = id;
-    // renderImgCanvas(id)
-    reRenderCanvas()
+    reRenderCanvas(id)
 }
 
-function renderImgCanvas(id) {
-    const IMG = document.querySelector(`.img-${id}`)
-    gElCanvas.width = 500
-    gElCanvas.height = 500
-    gCtx.drawImage(IMG, 0, 0, gElCanvas.width, gElCanvas.height);
+function renderImgCanvas() {
+    var img = new Image()
+    var imgUrl = getImgById(gCurrId).url
+    console.log(meme)
+    img.src = imgUrl;
+    if (isFirstGen) meme.lines[0].location.x = img.width / 2
+    isFirstGen = false;
+    gElCanvas.width = img.width
+    gElCanvas.height = img.height
+        // img.onload = () => {
+    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+        // meme.lines.forEach(line => {
+        //         writeText(line);
+        //     })
+        // }
+    gCtx = gElCanvas.getContext('2d')
 }
 
-function reRenderCanvas() {
-    renderImgCanvas(meme.selectedImgId);
-    document.querySelector('[name="meme-text"]').value = meme.lines[meme.selectedLineIdx].txt;
+function reRenderCanvas(id) {
+    renderImgCanvas(id);
+    // meme = getMeme()
     meme.lines.forEach(line => {
         writeText(line);
     })
+    document.querySelector('[name="meme-text"]').value = meme.lines[meme.selectedLineIdx].txt;
 }
 
 function renderGalleryByFilter(word) {
@@ -75,24 +89,22 @@ function onDownloadMeme(elDownload) {
 }
 
 function onImgClick(id) {
-    meme = getMeme()
-        // debugger
-    meme.selectedImgId = id;
+    isFirstGen = true;
+    gCurrId = id
     renderEditor(id);
     document.querySelector('.main-gallery').classList.add('hide');
     document.querySelector('#about').classList.add('hide');
     document.querySelector('.main-editor').classList.remove('hide');
-
+    // meme = getMeme()
+    meme.selectedImgId = id;
 }
 
 function writeText(line) {
-    // debugger
     gCtx.lineWidth = 2;
     gCtx.strokeStyle = line.strokeColor;
     gCtx.fillStyle = line.fillColor;
     gCtx.textAlign = line.align;
     gCtx.font = `${line.size}px ${line.font}`;
-    // debugger
     gCtx.strokeText(line.txt, line.location.x, line.location.y);
     gCtx.fillText(line.txt, line.location.x, line.location.y);
 }
