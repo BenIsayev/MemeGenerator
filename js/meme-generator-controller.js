@@ -4,9 +4,11 @@ window.addEventListener("load", init)
 var gElCanvas = document.querySelector('canvas')
 var gCtx = gElCanvas.getContext('2d')
 var meme = getMeme()
+var isMoving = false;
 
 function init() {
     renderGallery();
+    addEventListeners();
 }
 
 function renderGallery() {
@@ -32,6 +34,7 @@ function renderImgCanvas(id) {
 
 function reRenderCanvas() {
     renderImgCanvas(meme.selectedImgId);
+    document.querySelector('[name="meme-text"]').value = meme.lines[meme.selectedLineIdx].txt;
     meme.lines.forEach(line => {
         writeText(line);
     })
@@ -61,6 +64,12 @@ function onAddLine() {
 
 function onDeleteLine() {
     deleteLine();
+    reRenderCanvas();
+}
+
+function onAddSticker(sticker) {
+    addSticker(sticker);
+    reRenderCanvas();
 }
 
 function onTextWrite(txt) {
@@ -91,4 +100,38 @@ function decreaseFont() {
 function setTextLocation(pos) {
     meme.lines[meme.selectedLineIdx].align = pos;
 
+}
+
+function addEventListeners() {
+    gElCanvas.addEventListener('mousemove', onMove);
+    gElCanvas.addEventListener('mousedown', onDown);
+    gElCanvas.addEventListener('mouseup', onUp);
+}
+
+function onMove(ev) {
+    if (!isMoving) return
+    var pos = getEvPos(ev)
+    meme.lines[meme.selectedLineIdx].location = pos;
+    reRenderCanvas();
+}
+
+function onDown(ev) {
+    var pos = getEvPos(ev);
+    var clickedTextIdx = getClickedText(pos)
+    if (clickedTextIdx === -1) return;
+    meme.selectedLineIdx = clickedTextIdx;
+    isMoving = true;
+    reRenderCanvas();
+}
+
+function onUp(ev) {
+    isMoving = false;
+}
+
+function getEvPos(ev) {
+    var pos = {
+        x: ev.offsetX,
+        y: ev.offsetY
+    }
+    return pos
 }

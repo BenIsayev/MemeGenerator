@@ -27,7 +27,7 @@ var meme = {
     selectedLineIdx: 0,
     lines: [{
         txt: 'Texty Text',
-        size: 20,
+        size: 30,
         align: 'center',
         strokeColor: 'black',
         fillColor: 'black',
@@ -40,22 +40,55 @@ var meme = {
 function addLine() {
     if (meme.lines.length === 0) {
         meme.selectedLineIdx = 0;
+    } else meme.selectedLineIdx++;
+    meme.lines.push({
+        txt: 'New text',
+        size: 30,
+        align: 'center',
+        strokeColor: 'black',
+        fillColor: 'black',
+        font: 'Impact',
+        location: { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
+    })
+    meme.selectedLineIdx = meme.lines.length - 1;
+
+}
+
+function getClickedText(clickedPos) {
+    return meme.lines.findIndex(line => {
+        const pos = line.location
+        var txtLength = gCtx.measureText(line.txt).width
+        switch (line.align) {
+            case 'left':
+                return (clickedPos.x >= pos.x && clickedPos.x <= pos.x + txtLength && clickedPos.y <= pos.y && clickedPos.y >= pos.y - line.size);
+            case 'right':
+                return (clickedPos.x <= pos.x && clickedPos.x >= pos.x - txtLength && clickedPos.y <= pos.y && clickedPos.y >= pos.y - line.size);
+            case 'center':
+                return (clickedPos.x <= pos.x + (txtLength / 2) && clickedPos.x >= pos.x - (txtLength / 2) && clickedPos.y <= pos.y && clickedPos.y >= pos.y - line.size);
+        }
+    })
+}
+
+
+function addSticker(sticker) {
+    if (meme.lines.length === 0) {
+        meme.selectedLineIdx = 0;
     } else meme.selectedLineIdx++
         meme.lines.push({
-            txt: 'New text',
-            size: 20,
+            txt: sticker,
+            size: 30,
             align: 'center',
             strokeColor: 'black',
             fillColor: 'black',
             font: 'Impact',
             location: { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
         })
+    meme.selectedLineIdx = meme.lines.length - 1;
 }
 
 function deleteLine() {
     meme.lines.splice(meme.selectedLineIdx, 1);
-    if (meme.lines.length === 0) return;
-    meme.selectedLineIdx--;
+    meme.selectedLineIdx = 0;
 }
 
 function getMeme() {
