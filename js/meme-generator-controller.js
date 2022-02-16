@@ -48,13 +48,14 @@ function onImgClick(id) {
     renderEditor(id);
     meme.selectedImgId = id;
     document.querySelector('.main-gallery').classList.add('hide');
+    document.querySelector('#about').classList.add('hide');
     document.querySelector('.main-editor').classList.remove('hide');
 
 }
 
 function writeText(line) {
     // debugger
-    gCtx.lineWidth = 1;
+    gCtx.lineWidth = 2;
     gCtx.strokeStyle = line.strokeColor;
     gCtx.fillStyle = line.fillColor;
     gCtx.textAlign = line.align;
@@ -153,5 +154,7 @@ function getEvPos(ev) {
 function openGallery() {
     document.querySelector('.main-gallery').classList.remove('hide');
     document.querySelector('.main-editor').classList.add('hide');
+    document.querySelector('#about').classList.remove('hide');
+
 
 }

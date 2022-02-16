@@ -14,7 +14,7 @@
     <header class="">
         <section class="header-content main-layout flex space-between">
             <img src="img/LOGO.png">
-            <ul class="clean-list">
+            <ul class="clean-list flex">
                 <li><a onclick="openGallery()" href="#">Gallery</a></li>
                 <li><a href="#about">About</a></li>
             </ul>
@@ -51,8 +51,8 @@
                 <option>Arial</option>
                 <option>Serif</option>
             </select>
-                <input type="color" onchange="onChangeStroke(this.value);reRenderCanvas()"><img src="img/ICONS/text stroke.png">
-                <input type="color" onchange="onChangeFill(this.value);reRenderCanvas()"><img src="img/ICONS/paint-board-and-brush.png">
+                <input type="color" oninput="onChangeStroke(this.value);reRenderCanvas()"><img src="img/ICONS/text stroke.png">
+                <input type="color" oninput="onChangeFill(this.value);reRenderCanvas()"><img src="img/ICONS/paint-board-and-brush.png">
             </div>
             <section class="stickers">
                 <button onclick="onAddSticker(this.innerText)">🧠</button>
@@ -72,9 +72,9 @@
                 <h2>Ben Isayev</h2>
                 <p>Hi. I am Ben, born and raised in Israel, born on 15th of April 1997, I created this meme generator as a project of a programming course I am at called Coding Academy, I hope you like it!</p>
                 <br>
-                <a href="#" class="fa fa-facebook"></a>
-                <a href="#" class="fa fa-instagram"></a>
-                <a href="#" class="fa fa-github"></a>
+                <a href="https://www.facebook.com/ben.isayev" target="_blank" class="fa fa-facebook"></a>
+                <a href="https://www.instagram.com/benisayev/" target="_blank" class="fa fa-instagram"></a>
+                <a href="https://github.com/BenIsayev" target="_blank" class="fa fa-github"></a>
             </section>
         </section>
     </section>
