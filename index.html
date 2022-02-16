@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Meme Generator</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="">
+        <section class="header-content main-layout flex space-between">
+            <img src="img/LOGO.png">
+            <ul class="clean-list">
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </section>
+    </header>
+
+    <main class="main-layout main-gallery">
+        <section class="search-area">
+            <input type="text" placeholder="Enter search keyword">
+        </section>
+        <section class="main-gallery-container grid">
+        </section>
+    </main>
+
+    <main class="main-layout main-editor flex space-between">
+        <section class="edited-img"><canvas width="500" height="500"></canvas></section>
+        <setion class="editing-tools">
+            <input type="text" placeholder="Place your text here">
+
+
+        </setion>
+    </main>
+
+
+    <script src="js/services/utils.js"></script>
+    <script src="js/services/meme-generator-service.js"></script>
+    <script src="js/meme-generator-controller.js"></script>
+</body>
+
+</html>

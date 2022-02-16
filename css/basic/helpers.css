@@ -1,0 +1,29 @@
+/* FLEX */
+
+.flex {
+    display: flex;
+}
+
+.flex.space-between {
+    justify-content: space-between;
+}
+
+
+/* GRID */
+
+.grid {
+    display: grid;
+}
+
+
+/* lists */
+
+.clean-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.hide {
+    display: none;
+}

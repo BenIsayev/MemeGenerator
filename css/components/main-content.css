@@ -1,0 +1,12 @@
+.search-area {
+    padding: 40px 0px;
+}
+
+.main-gallery-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
+}
+
+.main-gallery-container img {
+    cursor: pointer;
+}

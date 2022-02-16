@@ -1,0 +1,8 @@
+header {
+    background-color: var(--clr1);
+    padding: 25px 0;
+}
+
+header img {
+    max-width: 200px;
+}
