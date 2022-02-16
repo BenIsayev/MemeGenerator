@@ -29,19 +29,39 @@
         </section>
     </main>
 
-    <main class="main-layout main-editor flex space-between">
-        <section class="edited-img"><canvas width="500" height="500"></canvas></section>
-        <setion class="editing-tools">
-            <input type="text" placeholder="Place your text here">
-
+    <main class="main-editor flex">
+        <section class="edited-img"><canvas></canvas></section>
+        <setion oninput="reRenderCanvas()" class="editing-tools-container flex column">
+            <input type="text" oninput="onTextWrite(this.value)" placeholder="Place your text here" name="meme-text">
+            <div class="first-box">
+                <button class="edit-btn"><img src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+                <button class="edit-btn" onclick="onAddLine();reRenderCanvas()"><img src="img/ICONS/add.png"></button>
+                <button class="edit-btn" onclick="onDeleteLine();reRenderCanvas()"><img src="img/ICONS/trash.png"></button>
+            </div>
+            <div class="second-box">
+                <button class="edit-btn" onclick="increaseFont();reRenderCanvas()"><img src="img/ICONS/increase font - icon.png"></button>
+                <button class="edit-btn" onclick="decreaseFont();reRenderCanvas()"><img src="img/ICONS/decrease font - icon.png"></button>
+                <button class="edit-btn" onclick="setTextLocation('right');reRenderCanvas()"><img src="img/ICONS/align-to-left.png"></button>
+                <button class="edit-btn" onclick="setTextLocation('center');reRenderCanvas()"><img src="img/ICONS/center-text-alignment.png"></button>
+                <button class="edit-btn" onclick="setTextLocation('left');reRenderCanvas()"><img src="img/ICONS/align-to-right.png"></button>
+            </div>
+            <div class="third-box">
+                <select onchange="onChangeFont(this.value)">
+                <option>Impact</option>
+                <option>Arial</option>
+                <option>Serif</option>
+            </select>
+                <input type="color" onchange="onChangeStroke(this.value);reRenderCanvas()"><img src="img/ICONS/text stroke.png">
+                <input type="color" onchange="onChangeFill(this.value);reRenderCanvas()"><img src="img/ICONS/paint-board-and-brush.png">
+            </div>
 
         </setion>
     </main>
 
 
-    <script src="js/services/utils.js"></script>
-    <script src="js/services/meme-generator-service.js"></script>
-    <script src="js/meme-generator-controller.js"></script>
+    <script src=" js/services/utils.js "></script>
+    <script src="js/services/meme-generator-service.js "></script>
+    <script src="js/meme-generator-controller.js "></script>
 </body>
 
 </html>

@@ -7,6 +7,24 @@
     gap: 10px;
 }
 
+.main-editor {
+    margin: 20px auto;
+    gap: 20px;
+    justify-content: center;
+}
+
 .main-gallery-container img {
     cursor: pointer;
+}
+
+.main-editor button img {
+    width: 25px;
+}
+
+.main-editor img {
+    width: 25px;
+}
+
+.editing-tools-container {
+    gap: 20px;
 }

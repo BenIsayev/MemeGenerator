@@ -21,10 +21,49 @@ const gImgs = [
     { id: 18, url: 'img//memes/18.jpg', keywords: ['funny', 'cat'] },
 ];
 
+
+var meme = {
+    selectedImgId: 5,
+    selectedLineIdx: 0,
+    lines: [{
+        txt: 'Texty Text',
+        size: 20,
+        align: 'center',
+        strokeColor: 'black',
+        fillColor: 'black',
+        font: 'Impact',
+        location: { x: 250, y: 100 }
+    }]
+}
+
 // var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
+function addLine() {
+    if (meme.lines.length === 0) {
+        meme.selectedLineIdx = 0;
+    } else meme.selectedLineIdx++
+        meme.lines.push({
+            txt: 'New text',
+            size: 20,
+            align: 'center',
+            strokeColor: 'black',
+            fillColor: 'black',
+            font: 'Impact',
+            location: { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
+        })
+}
+
+function deleteLine() {
+    meme.lines.splice(meme.selectedLineIdx, 1);
+    if (meme.lines.length === 0) return;
+    meme.selectedLineIdx--;
+}
+
+function getMeme() {
+    return meme;
+}
 
 function getImgById(id) {
-    return gImgs.find(img => img.id === id)
+    return gImgs.find(img => img.id === id);
 }
 
 function getImgs() {
