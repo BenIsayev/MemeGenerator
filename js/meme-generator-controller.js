@@ -40,10 +40,16 @@ function reRenderCanvas() {
     })
 }
 
+function onDownloadMeme(elDownload) {
+    downloadCanvas(elDownload);
+}
+
 function onImgClick(id) {
     renderEditor(id);
     meme.selectedImgId = id;
     document.querySelector('.main-gallery').classList.add('hide');
+    document.querySelector('.main-editor').classList.remove('hide');
+
 }
 
 function writeText(line) {
@@ -69,6 +75,12 @@ function onDeleteLine() {
 
 function onAddSticker(sticker) {
     addSticker(sticker);
+    reRenderCanvas();
+}
+
+function onChangeTextSelected() {
+    if (meme.selectedLineIdx === meme.lines.length - 1) meme.selectedLineIdx = 0;
+    else meme.selectedLineIdx++;
     reRenderCanvas();
 }
 
@@ -121,11 +133,13 @@ function onDown(ev) {
     if (clickedTextIdx === -1) return;
     meme.selectedLineIdx = clickedTextIdx;
     isMoving = true;
+    document.body.style.cursor = 'grabbing'
     reRenderCanvas();
 }
 
 function onUp(ev) {
     isMoving = false;
+    document.body.style.cursor = 'default'
 }
 
 function getEvPos(ev) {
@@ -134,4 +148,10 @@ function getEvPos(ev) {
         y: ev.offsetY
     }
     return pos
+}
+
+function openGallery() {
+    document.querySelector('.main-gallery').classList.remove('hide');
+    document.querySelector('.main-editor').classList.add('hide');
+
 }

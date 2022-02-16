@@ -15,8 +15,8 @@
         <section class="header-content main-layout flex space-between">
             <img src="img/LOGO.png">
             <ul class="clean-list">
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">About</a></li>
+                <li><a onclick="openGallery()" href="#">Gallery</a></li>
+                <li><a href="#about">About</a></li>
             </ul>
         </section>
     </header>
@@ -25,16 +25,16 @@
         <section class="search-area">
             <input type="text" placeholder="Enter search keyword">
         </section>
-        <section class="main-gallery-container grid">
+        <section class="main-gallery-container grid main-layout">
         </section>
     </main>
 
-    <main class="main-editor flex">
+    <main class="main-editor flex hide">
         <section class="edited-img"><canvas></canvas></section>
         <setion oninput="reRenderCanvas()" class="editing-tools-container flex column">
-            <input type="text" oninput="onTextWrite(this.value)" placeholder="Place your text here" name="meme-text">
+            <input type="text" oninput="onTextWrite(this.value)" name="meme-text">
             <div class="first-box">
-                <button class="edit-btn"><img src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+                <button class="edit-btn" onclick="onChangeTextSelected()"><img src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
                 <button class="edit-btn" onclick="onAddLine();reRenderCanvas()"><img src="img/ICONS/add.png"></button>
                 <button class="edit-btn" onclick="onDeleteLine();reRenderCanvas()"><img src="img/ICONS/trash.png"></button>
             </div>
@@ -59,10 +59,27 @@
                 <button onclick="onAddSticker(this.innerText)">🐡</button>
                 <button onclick="onAddSticker(this.innerText)">🌚</button>
             </section>
+            <section class="sharing">
+                <a href="#" onclick="onDownloadMeme(this)">Download</a>
+            </section>
         </setion>
     </main>
 
+    <section id="about">
+        <section class="about-container flex">
+            <img src="img/me.jpg">
+            <section class="about-me">
+                <h2>Ben Isayev</h2>
+                <p>Hi. I am Ben, born and raised in Israel, born on 15th of April 1997, I created this meme generator as a project of a programming course I am at called Coding Academy, I hope you like it!</p>
+                <br>
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-instagram"></a>
+                <a href="#" class="fa fa-github"></a>
+            </section>
+        </section>
+    </section>
 
+    <script src="https://kit.fontawesome.com/fc1ffc886f.js" crossorigin="anonymous"></script>
     <script src=" js/services/utils.js "></script>
     <script src="js/services/meme-generator-service.js "></script>
     <script src="js/meme-generator-controller.js "></script>

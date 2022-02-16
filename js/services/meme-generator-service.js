@@ -1,5 +1,8 @@
 'use strict'
 
+
+
+var isSecondLine = true;
 const gImgs = [
     { id: 1, url: 'img/memes/1.jpg', keywords: ['funny', 'cat'] },
     { id: 2, url: 'img/memes/2.jpg', keywords: ['funny', 'cat'] },
@@ -38,6 +41,7 @@ var meme = {
 
 // var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 function addLine() {
+    const posY = isSecondLine ? (gElCanvas.height * 0.9) : (gElCanvas.height / 2);
     if (meme.lines.length === 0) {
         meme.selectedLineIdx = 0;
     } else meme.selectedLineIdx++;
@@ -48,10 +52,10 @@ function addLine() {
         strokeColor: 'black',
         fillColor: 'black',
         font: 'Impact',
-        location: { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
+        location: { x: gElCanvas.width / 2, y: posY }
     })
     meme.selectedLineIdx = meme.lines.length - 1;
-
+    isSecondLine = false;
 }
 
 function getClickedText(clickedPos) {
@@ -101,4 +105,10 @@ function getImgById(id) {
 
 function getImgs() {
     return gImgs;
+}
+
+function downloadCanvas(elLink) {
+    const data = gElCanvas.toDataURL();
+    elLink.href = data;
+    elLink.download = 'my-meme';
 }
