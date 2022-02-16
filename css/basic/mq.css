@@ -1,0 +1,14 @@
+@media (max-width:600px) {
+    .search-area {
+        justify-content: center !important;
+    }
+    .search-area .key-words {
+        display: none;
+    }
+    #about .about-container {
+        flex-direction: column;
+    }
+    #about .about-container img {
+        max-width: 70vw;
+    }
+}

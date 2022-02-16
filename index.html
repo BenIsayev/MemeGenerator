@@ -21,16 +21,17 @@
         </section>
     </header>
 
-    <main class="main-layout main-gallery">
+    <main class="main-gallery">
 
-        <section class="search-area main-layout flex space-between">
+        <section class="search-area main-layout flex">
             <input oninput="onFilterBy(this.value)" type="text" placeholder="Enter search keyword">
             <section class="key-words flex"></section>
         </section>
-        <section class="main-gallery-container grid main-layout">
+        <section class="gallery-background">
+            <section class="main-gallery-container grid main-layout">
+            </section>
         </section>
     </main>
-
     <main class="main-editor flex hide">
         <section class="edited-img"><canvas></canvas></section>
         <setion oninput="reRenderCanvas()" class="editing-tools-container flex column">

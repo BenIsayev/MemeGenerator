@@ -44,13 +44,20 @@ function renderEditor(id) {
 function renderImgCanvas() {
     var img = new Image()
     var imgUrl = getImgById(gCurrId).url
-    console.log(meme)
     img.src = imgUrl;
-    if (isFirstGen) meme.lines[0].location.x = img.width / 2
+    if (window.innerWidth > 1120) {
+        gElCanvas.width = img.width
+        gElCanvas.height = img.height
+    } else if (window.innerWidth < 1120 && img.width > 400) {
+        gElCanvas.width = img.width * 0.5;
+        gElCanvas.height = img.height * 0.5;
+    } else {
+        gElCanvas.width = img.width;
+        gElCanvas.height = img.height;
+    }
+    if (isFirstGen) meme.lines[0].location.x = gElCanvas.width / 2
     isFirstGen = false;
-    gElCanvas.width = img.width
-    gElCanvas.height = img.height
-        // img.onload = () => {
+    // img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         // meme.lines.forEach(line => {
         //         writeText(line);

@@ -1,6 +1,7 @@
 .search-area {
     height: 100px;
     align-items: center;
+    justify-content: space-between;
 }
 
 .search-area input {
@@ -18,9 +19,13 @@
     gap: 5px;
 }
 
+.gallery-background {
+    background-color: #e3e3e3;
+    padding: 20px 0;
+}
+
 .main-gallery-container {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    /* grid-auto-rows: max-content; */
     gap: 10px;
 }
 
