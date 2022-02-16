@@ -1,5 +1,21 @@
 .search-area {
-    padding: 40px 0px;
+    height: 100px;
+    align-items: center;
+}
+
+.search-area input {
+    height: min-content;
+}
+
+.search-area .key-words {
+    height: 100%;
+    gap: 5px;
+}
+
+.search-area .key-words>* {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .main-gallery-container {
@@ -27,4 +43,17 @@
 
 .editing-tools-container {
     gap: 20px;
+}
+
+.editing-tools-container .sharing a {
+    text-decoration: none;
+    background-color: var(--clr1);
+    padding: 3px 7px;
+    border-radius: 1em;
+    box-shadow: 0 0 5px 0px #000;
+}
+
+.main-editor .stickers {
+    gap: 5px;
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
 }

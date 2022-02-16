@@ -1,45 +1,63 @@
 'use strict'
 
 
-
+var meme;
 var isSecondLine = true;
 const gImgs = [
-    { id: 1, url: 'img/memes/1.jpg', keywords: ['funny', 'cat'] },
-    { id: 2, url: 'img/memes/2.jpg', keywords: ['funny', 'cat'] },
-    { id: 3, url: 'img/memes/3.jpg', keywords: ['funny', 'cat'] },
-    { id: 4, url: 'img/memes/4.jpg', keywords: ['funny', 'cat'] },
-    { id: 5, url: 'img/memes/5.jpg', keywords: ['funny', 'cat'] },
-    { id: 6, url: 'img/memes/6.jpg', keywords: ['funny', 'cat'] },
-    { id: 7, url: 'img/memes/7.jpg', keywords: ['funny', 'cat'] },
-    { id: 8, url: 'img/memes/8.jpg', keywords: ['funny', 'cat'] },
-    { id: 9, url: 'img/memes/9.jpg', keywords: ['funny', 'cat'] },
-    { id: 10, url: 'img//memes/10.jpg', keywords: ['funny', 'cat'] },
-    { id: 11, url: 'img//memes/11.jpg', keywords: ['funny', 'cat'] },
-    { id: 12, url: 'img//memes/12.jpg', keywords: ['funny', 'cat'] },
-    { id: 13, url: 'img//memes/13.jpg', keywords: ['funny', 'cat'] },
-    { id: 14, url: 'img//memes/14.jpg', keywords: ['funny', 'cat'] },
-    { id: 15, url: 'img//memes/15.jpg', keywords: ['funny', 'cat'] },
-    { id: 16, url: 'img//memes/16.jpg', keywords: ['funny', 'cat'] },
-    { id: 17, url: 'img//memes/17.jpg', keywords: ['funny', 'cat'] },
-    { id: 18, url: 'img//memes/18.jpg', keywords: ['funny', 'cat'] },
+    { id: 1, url: 'img/memes/1.jpg', keywords: ['politics', 'funny'] },
+    { id: 2, url: 'img/memes/2.jpg', keywords: ['sweet', 'pet'] },
+    { id: 3, url: 'img/memes/3.jpg', keywords: ['sweet', 'baby'] },
+    { id: 4, url: 'img/memes/4.jpg', keywords: ['pet', 'cat'] },
+    { id: 5, url: 'img/memes/5.jpg', keywords: ['baby', 'funny'] },
+    { id: 6, url: 'img/memes/6.jpg', keywords: ['funny'] },
+    { id: 7, url: 'img/memes/7.jpg', keywords: ['funny', 'baby'] },
+    { id: 8, url: 'img/memes/8.jpg', keywords: ['funny'] },
+    { id: 9, url: 'img/memes/9.jpg', keywords: ['funny', 'baby'] },
+    { id: 10, url: 'img//memes/10.jpg', keywords: ['funny', 'politics'] },
+    { id: 11, url: 'img//memes/11.jpg', keywords: ['funny'] },
+    { id: 12, url: 'img//memes/12.jpg', keywords: ['funny'] },
+    { id: 13, url: 'img//memes/13.jpg', keywords: ['funny', 'famous'] },
+    { id: 14, url: 'img//memes/14.jpg', keywords: ['funny', 'famous'] },
+    { id: 15, url: 'img//memes/15.jpg', keywords: ['funny', 'famous'] },
+    { id: 16, url: 'img//memes/16.jpg', keywords: ['funny', 'famous'] },
+    { id: 17, url: 'img//memes/17.jpg', keywords: ['politics', 'famous'] },
+    { id: 18, url: 'img//memes/18.jpg', keywords: ['funny', 'famous'] },
+    { id: 19, url: 'img//memes/19.jpg', keywords: ['politics', 'famous'] },
 ];
 
+var gKeywordSearchCountMap = { 'funny': 1, 'cat': 1, 'baby': 1, 'politics': 1, 'sweet': 1, 'pet': 1, 'famous': 1 }
 
-var meme = {
-    selectedImgId: 5,
-    selectedLineIdx: 0,
-    lines: [{
-        txt: 'Texty Text',
-        size: 30,
-        align: 'center',
-        strokeColor: 'black',
-        fillColor: 'black',
-        font: 'Impact',
-        location: { x: 250, y: 100 }
-    }]
+function getKeyWords() {
+    return gKeywordSearchCountMap;
 }
 
-// var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
+function filterBy(word) {
+    if (!gKeywordSearchCountMap[word]) return;
+    gKeywordSearchCountMap[word]++;
+}
+
+function getImgsByFilter(word) {
+    return gImgs.filter(img => img.keywords.includes(word))
+}
+
+function getMeme() {
+    meme = {
+        selectedImgId: 5,
+        selectedLineIdx: 0,
+        lines: [{
+            txt: 'Texty Text',
+            size: 30,
+            align: 'center',
+            strokeColor: 'black',
+            fillColor: 'black',
+            font: 'Impact',
+            location: { x: 250, y: 100 }
+        }]
+    }
+    return meme;
+}
+
+
 function addLine() {
     const posY = isSecondLine ? (gElCanvas.height * 0.9) : (gElCanvas.height / 2);
     if (meme.lines.length === 0) {
@@ -95,9 +113,9 @@ function deleteLine() {
     meme.selectedLineIdx = 0;
 }
 
-function getMeme() {
-    return meme;
-}
+// function getMeme() {
+//     return meme;
+// }
 
 function getImgById(id) {
     return gImgs.find(img => img.id === id);

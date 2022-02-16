@@ -3,15 +3,29 @@
 window.addEventListener("load", init)
 var gElCanvas = document.querySelector('canvas')
 var gCtx = gElCanvas.getContext('2d')
-var meme = getMeme()
+var meme;
 var isMoving = false;
 
 function init() {
     renderGallery();
+    getMeme();
     addEventListeners();
+    renderKeyWords()
+}
+
+function renderKeyWords() {
+    var keyWords = getKeyWords()
+    var keyWordsHTMLs = []
+    for (const word in keyWords) {
+        keyWordsHTMLs.push(`<a onclick="onFilterBy('${word}')" style="font-size: ${keyWords[word]+16}px" href=#>${word}</a>`)
+    }
+    document.querySelector('.key-words').innerHTML = keyWordsHTMLs.join('');
 }
 
 function renderGallery() {
+    document.querySelector('.main-gallery').classList.remove('hide');
+    document.querySelector('#about').classList.remove('hide');
+    document.querySelector('.main-editor').classList.add('hide');
     const IMGS = getImgs();
     var imgsHTMLs = IMGS.map(img => {
         return `<img src="${img.url}" onclick="onImgClick(${img.id})" class="img-${img.id}">`
@@ -40,13 +54,31 @@ function reRenderCanvas() {
     })
 }
 
+function renderGalleryByFilter(word) {
+    const IMGS = getImgsByFilter(word);
+    console.log(IMGS)
+    var imgsHTMLs = IMGS.map(img => {
+        return `<img src="${img.url}" onclick="onImgClick(${img.id})" class="img-${img.id}">`
+    })
+    document.querySelector('.main-gallery-container').innerHTML = imgsHTMLs.join('');
+    if (!imgsHTMLs.length) renderGallery();
+}
+
+function onFilterBy(word) {
+    filterBy(word);
+    renderKeyWords();
+    renderGalleryByFilter(word);
+}
+
 function onDownloadMeme(elDownload) {
     downloadCanvas(elDownload);
 }
 
 function onImgClick(id) {
-    renderEditor(id);
+    meme = getMeme()
+        // debugger
     meme.selectedImgId = id;
+    renderEditor(id);
     document.querySelector('.main-gallery').classList.add('hide');
     document.querySelector('#about').classList.add('hide');
     document.querySelector('.main-editor').classList.remove('hide');

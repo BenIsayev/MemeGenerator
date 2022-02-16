@@ -13,7 +13,7 @@
 
     <header class="">
         <section class="header-content main-layout flex space-between">
-            <img src="img/LOGO.png">
+            <a href="index.html"><img src="img/LOGO.png"></a>
             <ul class="clean-list flex">
                 <li><a onclick="openGallery()" href="#">Gallery</a></li>
                 <li><a href="#about">About</a></li>
@@ -22,8 +22,10 @@
     </header>
 
     <main class="main-layout main-gallery">
-        <section class="search-area">
-            <input type="text" placeholder="Enter search keyword">
+
+        <section class="search-area main-layout flex space-between">
+            <input oninput="onFilterBy(this.value)" type="text" placeholder="Enter search keyword">
+            <section class="key-words flex"></section>
         </section>
         <section class="main-gallery-container grid main-layout">
         </section>
@@ -33,17 +35,17 @@
         <section class="edited-img"><canvas></canvas></section>
         <setion oninput="reRenderCanvas()" class="editing-tools-container flex column">
             <input type="text" oninput="onTextWrite(this.value)" name="meme-text">
-            <div class="first-box">
-                <button class="edit-btn" onclick="onChangeTextSelected()"><img src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
-                <button class="edit-btn" onclick="onAddLine();reRenderCanvas()"><img src="img/ICONS/add.png"></button>
-                <button class="edit-btn" onclick="onDeleteLine();reRenderCanvas()"><img src="img/ICONS/trash.png"></button>
+            <div class="first-box flex space-between">
+                <button onclick="onChangeTextSelected()"><img src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+                <button onclick="onAddLine();reRenderCanvas()"><img src="img/ICONS/add.png"></button>
+                <button onclick="onDeleteLine();reRenderCanvas()"><img src="img/ICONS/trash.png"></button>
             </div>
-            <div class="second-box">
-                <button class="edit-btn" onclick="increaseFont();reRenderCanvas()"><img src="img/ICONS/increase font - icon.png"></button>
-                <button class="edit-btn" onclick="decreaseFont();reRenderCanvas()"><img src="img/ICONS/decrease font - icon.png"></button>
-                <button class="edit-btn" onclick="setTextLocation('right');reRenderCanvas()"><img src="img/ICONS/align-to-left.png"></button>
-                <button class="edit-btn" onclick="setTextLocation('center');reRenderCanvas()"><img src="img/ICONS/center-text-alignment.png"></button>
-                <button class="edit-btn" onclick="setTextLocation('left');reRenderCanvas()"><img src="img/ICONS/align-to-right.png"></button>
+            <div class="second-box flex space-between">
+                <button onclick="increaseFont();reRenderCanvas()"><img src="img/ICONS/increase font - icon.png"></button>
+                <button onclick="decreaseFont();reRenderCanvas()"><img src="img/ICONS/decrease font - icon.png"></button>
+                <button onclick="setTextLocation('right');reRenderCanvas()"><img src="img/ICONS/align-to-left.png"></button>
+                <button onclick="setTextLocation('center');reRenderCanvas()"><img src="img/ICONS/center-text-alignment.png"></button>
+                <button onclick="setTextLocation('left');reRenderCanvas()"><img src="img/ICONS/align-to-right.png"></button>
             </div>
             <div class="third-box">
                 <select onchange="onChangeFont(this.value)">
@@ -54,13 +56,27 @@
                 <input type="color" oninput="onChangeStroke(this.value);reRenderCanvas()"><img src="img/ICONS/text stroke.png">
                 <input type="color" oninput="onChangeFill(this.value);reRenderCanvas()"><img src="img/ICONS/paint-board-and-brush.png">
             </div>
-            <section class="stickers">
+            <section class="stickers grid">
                 <button onclick="onAddSticker(this.innerText)">🧠</button>
                 <button onclick="onAddSticker(this.innerText)">🐡</button>
                 <button onclick="onAddSticker(this.innerText)">🌚</button>
+                <button onclick="onAddSticker(this.innerText)">🤪</button>
+                <button onclick="onAddSticker(this.innerText)">🤖</button>
+                <button onclick="onAddSticker(this.innerText)">👹</button>
+                <button onclick="onAddSticker(this.innerText)">👻</button>
+                <button onclick="onAddSticker(this.innerText)">👀</button>
+                <button onclick="onAddSticker(this.innerText)">☝🏻</button>
+                <button onclick="onAddSticker(this.innerText)">👍🏻</button>
+                <button onclick="onAddSticker(this.innerText)">👎🏻</button>
+                <button onclick="onAddSticker(this.innerText)">💪🏻</button>
+                <button onclick="onAddSticker(this.innerText)">🐶</button>
+                <button onclick="onAddSticker(this.innerText)">🐨</button>
             </section>
             <section class="sharing">
                 <a href="#" onclick="onDownloadMeme(this)">Download</a>
+                <a href="#" onclick="uploadImg()">Upload Img</a>
+                <p class="user-msg"></p>
+                <div class="share-container"></div>
             </section>
         </setion>
     </main>
@@ -79,8 +95,18 @@
         </section>
     </section>
 
+
+
+    <footer class="flex column">
+        <img src="img/LOGO.png">
+        <p>All rights reserved 2022</p>
+    </footer>
+
+
+
     <script src="https://kit.fontawesome.com/fc1ffc886f.js" crossorigin="anonymous"></script>
-    <script src=" js/services/utils.js "></script>
+    <script src="js/services/upload-service.js"></script>
+    <script src="js/services/utils.js"></script>
     <script src="js/services/meme-generator-service.js "></script>
     <script src="js/meme-generator-controller.js "></script>
 </body>

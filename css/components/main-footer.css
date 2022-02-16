@@ -1,0 +1,12 @@
+footer {
+    color: white;
+    background-color: var(--clr1);
+    height: 150px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px -4px 20px 2px #ababab
+}
+
+footer img {
+    max-width: 200px;
+}
