@@ -59,6 +59,7 @@
 
 .main-editor .edited-img {
     justify-content: center;
+    align-items: center;
 }
 
 .editing-tools-container {

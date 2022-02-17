@@ -12,7 +12,7 @@ const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
 function init() {
     renderGallery();
-    meme = getMeme();
+    meme = generateMeme();
     addEventListeners();
     renderKeyWords()
 }
@@ -38,6 +38,10 @@ function renderGallery() {
     document.querySelector('.main-gallery-container').innerHTML = imgsHTMLs.join('');
 }
 
+function openMemes() {
+
+}
+
 function renderEditor(id) {
     reRenderCanvas(id)
 }
@@ -49,7 +53,7 @@ function renderImgCanvas() {
     if (window.innerWidth > 1120) {
         gElCanvas.width = img.width
         gElCanvas.height = img.height
-    } else if (window.innerWidth < 1120 && img.width > 400) {
+    } else if (window.innerWidth < 1120 && img.width > 600) {
         gElCanvas.width = img.width * 0.5;
         gElCanvas.height = img.height * 0.5;
     } else {
@@ -98,6 +102,7 @@ function onDownloadMeme(elDownload) {
 
 function onImgClick(id) {
     isFirstGen = true;
+    generateMeme();
     gCurrId = id
     renderEditor(id);
     document.querySelector('.main-gallery').classList.add('hide');
@@ -222,6 +227,4 @@ function openGallery() {
     document.querySelector('.main-gallery').classList.remove('hide');
     document.querySelector('.main-editor').classList.add('hide');
     document.querySelector('#about').classList.remove('hide');
-
-
 }

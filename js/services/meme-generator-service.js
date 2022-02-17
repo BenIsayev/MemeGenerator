@@ -3,6 +3,8 @@
 
 var meme;
 var isSecondLine = true;
+var gSavedMemes = loadFromStorage('savedMemes');
+
 // const gImgs = [
 //     { id: 1, url: 'img/memes/1.jpg', keywords: ['politics', 'funny'] },
 //     { id: 2, url: 'img/memes/2.jpg', keywords: ['sweet', 'pet'] },
@@ -52,6 +54,7 @@ const gImgs = [
     { id: 26, url: 'img/memes/26.jpeg', keywords: ['funny', 'famous'] },
 ];
 
+
 var gKeywordSearchCountMap = { 'funny': 1, 'cat': 1, 'baby': 1, 'politics': 1, 'sweet': 1, 'pet': 1, 'famous': 1 }
 
 function getKeyWords() {
@@ -67,7 +70,7 @@ function getImgsByFilter(word) {
     return gImgs.filter(img => img.keywords.includes(word))
 }
 
-function getMeme() {
+function generateMeme() {
     meme = {
         selectedImgId: 0,
         selectedLineIdx: 0,
@@ -94,8 +97,8 @@ function addLine() {
         txt: 'New text',
         size: 30,
         align: 'center',
-        strokeColor: 'white',
-        fillColor: 'black',
+        strokeColor: 'black',
+        fillColor: 'white',
         font: 'Impact',
         location: { x: gElCanvas.width / 2, y: posY }
     })

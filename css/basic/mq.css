@@ -43,7 +43,6 @@
     }
     header ul li:first-child {
         border-top: 1px solid black;
-        border-right: none;
     }
     header ul li {
         padding-top: 20px;

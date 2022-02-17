@@ -13,10 +13,6 @@ header ul {
     align-items: center;
 }
 
-header ul li:first-child {
-    border-right: 1px solid black;
-}
-
 header ul li a {
     padding: 20px;
     text-decoration: none;
