@@ -183,6 +183,7 @@ function addEventListeners() {
     gElCanvas.addEventListener('touchmove', onMove)
     gElCanvas.addEventListener('touchstart', onDown)
     gElCanvas.addEventListener('touchend', onUp)
+    window.addEventListener('resize', reRenderCanvas)
 }
 
 function onMove(ev) {
