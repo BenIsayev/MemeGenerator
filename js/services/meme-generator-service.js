@@ -76,7 +76,7 @@ function getMeme() {
             size: 30,
             align: 'center',
             strokeColor: 'black',
-            fillColor: 'black',
+            fillColor: 'white',
             font: 'Impact',
             location: { x: gElCanvas.width / 2, y: gElCanvas.height * 0.3 }
         }]
@@ -94,7 +94,7 @@ function addLine() {
         txt: 'New text',
         size: 30,
         align: 'center',
-        strokeColor: 'black',
+        strokeColor: 'white',
         fillColor: 'black',
         font: 'Impact',
         location: { x: gElCanvas.width / 2, y: posY }
@@ -128,7 +128,7 @@ function addSticker(sticker) {
             size: 30,
             align: 'center',
             strokeColor: 'black',
-            fillColor: 'black',
+            fillColor: 'white',
             font: 'Impact',
             location: { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
         })

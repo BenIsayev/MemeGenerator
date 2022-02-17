@@ -117,6 +117,10 @@ function writeText(line) {
     gCtx.fillText(line.txt, line.location.x, line.location.y);
 }
 
+function onOpenMenu() {
+    document.body.classList.toggle('menu-open')
+}
+
 function onAddLine() {
     addLine();
 }

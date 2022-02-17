@@ -23,6 +23,11 @@ header ul li a {
     color: white;
 }
 
-header ul li a:hover {
+header ul li a:hover,
+header ul li a:focus {
     color: black;
+}
+
+header button {
+    display: none;
 }
