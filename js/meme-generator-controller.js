@@ -8,6 +8,7 @@ var gImg;
 var gCurrId;
 var isFirstGen = true;
 var isMoving = false;
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
 function init() {
     renderGallery();
@@ -170,6 +171,9 @@ function addEventListeners() {
     gElCanvas.addEventListener('mousemove', onMove);
     gElCanvas.addEventListener('mousedown', onDown);
     gElCanvas.addEventListener('mouseup', onUp);
+    gElCanvas.addEventListener('touchmove', onMove)
+    gElCanvas.addEventListener('touchstart', onDown)
+    gElCanvas.addEventListener('touchend', onUp)
 }
 
 function onMove(ev) {
@@ -180,7 +184,7 @@ function onMove(ev) {
 }
 
 function onDown(ev) {
-    var pos = getEvPos(ev);
+    const pos = getEvPos(ev);
     var clickedTextIdx = getClickedText(pos)
     if (clickedTextIdx === -1) return;
     meme.selectedLineIdx = clickedTextIdx;
@@ -198,6 +202,14 @@ function getEvPos(ev) {
     var pos = {
         x: ev.offsetX,
         y: ev.offsetY
+    }
+    if (gTouchEvs.includes(ev.type)) {
+        ev.preventDefault()
+        ev = ev.changedTouches[0]
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
+        }
     }
     return pos
 }
