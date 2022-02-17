@@ -52,6 +52,10 @@
     width: 25px;
 }
 
+.main-editor .edited-img {
+    justify-content: center;
+}
+
 .editing-tools-container {
     gap: 20px;
 }
@@ -66,5 +70,5 @@
 
 .main-editor .stickers {
     gap: 5px;
-    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(35px, 1fr));
 }
