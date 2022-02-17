@@ -82,7 +82,6 @@ function reRenderCanvas(id) {
 
 function renderGalleryByFilter(word) {
     const IMGS = getImgsByFilter(word);
-    console.log(IMGS)
     var imgsHTMLs = IMGS.map(img => {
         return `<img src="${img.url}" onclick="onImgClick(${img.id})" class="img-${img.id}">`
     })

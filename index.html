@@ -25,7 +25,7 @@
     <main class="main-gallery">
 
         <section class="search-area main-layout flex">
-            <input oninput="onFilterBy(this.value)" type="text" placeholder="Enter search keyword">
+            <input oninput="onFilterBy(this.value.toLowerCase())" type="text" placeholder="Enter search keyword">
             <section class="key-words flex"></section>
         </section>
         <section class="gallery-background">
