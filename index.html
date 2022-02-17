@@ -15,6 +15,7 @@
         <section class="header-content main-layout flex space-between">
             <a href="index.html"><img src="img/LOGO.png"></a>
             <ul class="clean-list flex">
+                <li><a onclick="onRandomMeme()" href="#">I'm Flexible!</a></li>
                 <li><a onclick="openGallery()" href="#">Gallery</a></li>
                 <li><a href="#about">About</a></li>
             </ul>
@@ -25,8 +26,9 @@
     <main class="main-gallery">
 
         <section class="search-area main-layout flex">
-            <input oninput="onFilterBy(this.value.toLowerCase())" type="text" placeholder="Enter search keyword">
+            <input list="key-words-container" placeholder="search by topic" oninput="onFilterBy(this.value.toLowerCase())" />
             <section class="key-words flex"></section>
+            <datalist id="key-words-container"></datalist>
         </section>
         <section class="gallery-background">
             <section class="main-gallery-container grid main-layout">

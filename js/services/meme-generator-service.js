@@ -5,26 +5,6 @@ var meme;
 var isSecondLine = true;
 var gSavedMemes = loadFromStorage('savedMemes');
 
-// const gImgs = [
-//     { id: 1, url: 'img/memes/1.jpg', keywords: ['politics', 'funny'] },
-//     { id: 2, url: 'img/memes/2.jpg', keywords: ['sweet', 'pet'] },
-//     { id: 3, url: 'img/memes/3.jpg', keywords: ['sweet', 'baby'] },
-//     { id: 4, url: 'img/memes/4.jpg', keywords: ['pet', 'cat'] },
-//     { id: 5, url: 'img/memes/5.jpg', keywords: ['baby', 'funny'] },
-//     { id: 6, url: 'img/memes/6.jpg', keywords: ['funny'] },
-//     { id: 7, url: 'img/memes/7.jpg', keywords: ['funny', 'baby'] },
-//     { id: 8, url: 'img/memes/8.jpg', keywords: ['funny'] },
-//     { id: 9, url: 'img/memes/9.jpg', keywords: ['funny', 'baby'] },
-//     { id: 10, url: 'img/memes/10.jpg', keywords: ['funny', 'politics'] },
-//     { id: 11, url: 'img/memes/11.jpg', keywords: ['funny'] },
-//     { id: 12, url: 'img/memes/12.jpg', keywords: ['funny'] },
-//     { id: 13, url: 'img/memes/13.jpg', keywords: ['funny', 'famous'] },
-//     { id: 14, url: 'img/memes/14.jpg', keywords: ['funny', 'famous'] },
-//     { id: 15, url: 'img/memes/15.jpg', keywords: ['funny', 'famous'] },
-//     { id: 16, url: 'img/memes/16.jpg', keywords: ['funny', 'famous'] },
-//     { id: 17, url: 'img/memes/17.jpg', keywords: ['politics', 'famous'] },
-//     { id: 18, url: 'img/memes/18.jpg', keywords: ['funny', 'famous'] },
-// ];
 const gImgs = [
     { id: 1, url: 'img/memes/1.jpg', keywords: ['funny'] },
     { id: 2, url: 'img/memes/2.jpg', keywords: ['funny', 'politics'] },
@@ -156,4 +136,45 @@ function downloadCanvas(elLink) {
     const data = gElCanvas.toDataURL();
     elLink.href = data;
     elLink.download = 'my-meme';
+}
+
+
+function getRandomMeme() {
+    var posY = gElCanvas.height * 0.3
+    onImgClick(getRandomInt(0, gImgs.length - 1))
+    meme.lines = [];
+    for (var i = 0; i < 2; i++) {
+        meme.lines.push({
+            txt: getRandomTxt(),
+            size: 20,
+            align: 'center',
+            strokeColor: 'black',
+            fillColor: 'white',
+            font: 'Impact',
+            location: { x: gElCanvas.width / 2, y: posY }
+        })
+        posY = gElCanvas.height * 0.8;
+    }
+    reRenderCanvas();
+}
+
+function getRandomTxt() {
+    const memesSentences = [
+        'I never eat falafel',
+        'DOMS DOMS EVERYWHERE',
+        'Stop Using i in for loops',
+        'Armed in knowledge',
+        'Js error "Unexpected String"',
+        'One does not simply write js',
+        'I`m a simple man i see vanilla JS, i click like!',
+        'JS, HTML,CSS?? Even my momma can do that',
+        'May the force be with you',
+        'I know JS',
+        'JS Where everything is made up and the rules dont matter',
+        'Not sure if im good at programming or good at googling',
+        'But if we could',
+        'JS what is this?',
+        'Write hello world , add to cv 7 years experienced',
+    ];
+    return memesSentences[getRandomInt(0, memesSentences.length)]
 }

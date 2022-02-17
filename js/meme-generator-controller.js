@@ -12,6 +12,7 @@ const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
 function init() {
     renderGallery();
+    renderDataList();
     meme = generateMeme();
     addEventListeners();
     renderKeyWords()
@@ -89,6 +90,16 @@ function renderGalleryByFilter(word) {
     if (!imgsHTMLs.length) renderGallery();
 }
 
+function renderDataList() {
+    var keyWords = getKeyWords()
+    var dataListHTML = []
+    for (const word in keyWords) {
+        dataListHTML.push(`<option>${word}</option>`)
+    }
+    document.querySelector('#key-words-container').innerHTML = dataListHTML.join('')
+}
+
+
 function onFilterBy(word) {
     filterBy(word);
     renderKeyWords();
@@ -107,7 +118,6 @@ function onImgClick(id) {
     document.querySelector('.main-gallery').classList.add('hide');
     document.querySelector('#about').classList.add('hide');
     document.querySelector('.main-editor').classList.remove('hide');
-    // meme = getMeme()
     meme.selectedImgId = id;
 }
 
@@ -227,4 +237,8 @@ function openGallery() {
     document.querySelector('.main-gallery').classList.remove('hide');
     document.querySelector('.main-editor').classList.add('hide');
     document.querySelector('#about').classList.remove('hide');
+}
+
+function onRandomMeme() {
+    getRandomMeme();
 }
