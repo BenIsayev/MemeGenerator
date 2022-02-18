@@ -15,7 +15,8 @@ function init() {
     renderDataList();
     meme = generateMeme();
     addEventListeners();
-    renderKeyWords()
+    renderKeyWords();
+    loadSavedMemes();
 }
 
 
@@ -37,6 +38,15 @@ function renderGallery() {
         return `<img src="${img.url}" onclick="onImgClick(${img.id})" class="img-${img.id}">`
     })
     document.querySelector('.main-gallery-container').innerHTML = imgsHTMLs.join('');
+}
+
+function renderSavedMemes() {
+    var memes = getSavedMemes();
+    console.log(memes)
+    var memeHTML = memes.map(meme => {
+        return `<img src="${meme}"/>`
+    })
+    document.querySelector('.main-gallery-container').innerHTML = memeHTML.join('');
 }
 
 function openMemes() {
@@ -234,6 +244,7 @@ function getEvPos(ev) {
 }
 
 function openGallery() {
+    renderGallery();
     document.querySelector('.main-gallery').classList.remove('hide');
     document.querySelector('.main-editor').classList.add('hide');
     document.querySelector('#about').classList.remove('hide');
@@ -241,4 +252,15 @@ function openGallery() {
 
 function onRandomMeme() {
     getRandomMeme();
+}
+
+function onSaveImg() {
+    saveMeme();
+}
+
+function openSavedMemes() {
+    renderSavedMemes();
+    document.querySelector('.main-gallery').classList.remove('hide');
+    document.querySelector('#about').classList.remove('hide');
+    document.querySelector('.main-editor').classList.add('hide');
 }

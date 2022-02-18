@@ -17,6 +17,7 @@
             <ul class="clean-list flex">
                 <li><a onclick="onRandomMeme()" href="#">I'm Flexible!</a></li>
                 <li><a onclick="openGallery()" href="#">Gallery</a></li>
+                <li><a onclick="openSavedMemes()" href="#">Memes</a></li>
                 <li><a href="#about">About</a></li>
             </ul>
             <button onclick="onToggleMenu()">☰</button>
@@ -77,8 +78,9 @@
                 <button onclick="onAddSticker(this.innerText)">🐨</button>
             </section>
             <section class="sharing">
-                <a href="#" onclick="onDownloadMeme(this)">Download</a>
+                <a href="#" onclick="onDownloadMeme(this)">Download Img</a>
                 <a href="#" onclick="uploadImg()">Upload Img</a>
+                <a href="#" onclick="onSaveImg()">Save Img</a>
                 <p class="user-msg"></p>
                 <div class="share-container"></div>
             </section>

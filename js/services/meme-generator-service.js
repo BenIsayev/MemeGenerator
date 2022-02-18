@@ -3,7 +3,7 @@
 
 var meme;
 var isSecondLine = true;
-var gSavedMemes = loadFromStorage('savedMemes');
+var gSavedMemes;
 
 const gImgs = [
     { id: 1, url: 'img/memes/1.jpg', keywords: ['funny'] },
@@ -133,7 +133,7 @@ function getImgs() {
 }
 
 function downloadCanvas(elLink) {
-    const data = gElCanvas.toDataURL();
+    const data = gElCanvas.toDataURL('image/jpeg');
     elLink.href = data;
     elLink.download = 'my-meme';
 }
@@ -177,4 +177,20 @@ function getRandomTxt() {
         'Write hello world , add to cv 7 years experienced',
     ];
     return memesSentences[getRandomInt(0, memesSentences.length)]
+}
+
+function loadSavedMemes() {
+    gSavedMemes = loadFromStorage('savedMemes');
+    if (!gSavedMemes || !gSavedMemes.length) gSavedMemes = [];
+}
+
+function saveMeme() {
+    const data = gElCanvas.toDataURL('image/jpeg');
+    gSavedMemes.push(data)
+    saveToStorage('savedMemes', gSavedMemes)
+    gSavedMemes = loadFromStorage('savedMemes');
+}
+
+function getSavedMemes() {
+    return gSavedMemes;
 }
