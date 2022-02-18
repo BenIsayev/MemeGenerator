@@ -66,9 +66,6 @@ function renderImgCanvas() {
     } else if (window.innerWidth < 1120 && img.width > 600) {
         gElCanvas.width = img.width * 0.5;
         gElCanvas.height = img.height * 0.5;
-    } else {
-        gElCanvas.width = img.width;
-        gElCanvas.height = img.height;
     }
     if (isFirstGen) meme.lines[0].location.x = gElCanvas.width / 2
     isFirstGen = false;
@@ -82,6 +79,8 @@ function reRenderCanvas(id) {
         writeText(line);
     })
     document.querySelector('[name="meme-text"]').value = meme.lines[meme.selectedLineIdx].txt;
+    renderSelectedTextRect();
+
 }
 
 function renderGalleryByFilter(word) {
@@ -207,7 +206,11 @@ function onMove(ev) {
 function onDown(ev) {
     const pos = getEvPos(ev);
     var clickedTextIdx = getClickedText(pos)
-    if (clickedTextIdx === -1) return;
+    if (clickedTextIdx === -1) {
+        meme.selectedLineIdx = -1;
+        reRenderCanvas()
+        return;
+    }
     meme.selectedLineIdx = clickedTextIdx;
     isMoving = true;
     document.body.style.cursor = 'grabbing'
@@ -233,6 +236,13 @@ function getEvPos(ev) {
         }
     }
     return pos
+}
+
+function renderSelectedTextRect() {
+    const line = meme.lines[meme.selectedLineIdx]
+    var lineWidth = gCtx.measureText(line.txt).width
+    gCtx.fillStyle = '#ffffff80'
+    gCtx.fillRect(line.location.x - lineWidth - 5, line.location.y - line.size, lineWidth * 2 + 5, line.size + 5)
 }
 
 function openGallery() {
