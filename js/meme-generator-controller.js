@@ -60,14 +60,17 @@ function renderImgCanvas() {
     const img = new Image()
     var imgUrl = getImgById(gCurrId).url
     img.src = imgUrl;
+    const DIFF = img.width / img.height;
     if (window.innerWidth > 1120) {
-        const DIFF = img.width / img.height;
-        gElCanvas.width = window.innerWidth * 0.7;
-        gElCanvas.height = gElCanvas.width / DIFF;
-    } else if (window.innerWidth < 1120 && img.width > 600) {
-        const DIFF = img.width / img.height;
         gElCanvas.width = window.innerWidth * 0.5;
         gElCanvas.height = gElCanvas.width / DIFF;
+    } else if (window.innerWidth < 1120 && img.width > 600) {
+        gElCanvas.width = window.innerWidth * 0.5;
+        gElCanvas.height = gElCanvas.width / DIFF;
+    }
+    if (gElCanvas.height > window.innerHeight) {
+        gElCanvas.height *= 0.45;
+        gElCanvas.width *= 0.45;
     }
     if (isFirstGen) meme.lines[0].location.x = gElCanvas.width / 2
     isFirstGen = false;
