@@ -61,11 +61,13 @@ function renderImgCanvas() {
     var imgUrl = getImgById(gCurrId).url
     img.src = imgUrl;
     if (window.innerWidth > 1120) {
-        gElCanvas.width = img.width
-        gElCanvas.height = img.height
+        const DIFF = img.width / img.height;
+        gElCanvas.width = window.innerWidth * 0.7;
+        gElCanvas.height = gElCanvas.width / DIFF;
     } else if (window.innerWidth < 1120 && img.width > 600) {
-        gElCanvas.width = img.width * 0.5;
-        gElCanvas.height = img.height * 0.5;
+        const DIFF = img.width / img.height;
+        gElCanvas.width = window.innerWidth * 0.5;
+        gElCanvas.height = gElCanvas.width / DIFF;
     }
     if (isFirstGen) meme.lines[0].location.x = gElCanvas.width / 2
     isFirstGen = false;
