@@ -61,12 +61,11 @@ function renderImgCanvas() {
     var imgUrl = getImgById(gCurrId).url
     img.src = imgUrl;
     const DIFF = img.width / img.height;
-    debugger
     if (window.innerWidth > 1120 && img.width > 800) {
         gElCanvas.width = window.innerWidth * 0.5;
         gElCanvas.height = gElCanvas.width / DIFF;
     } else if (window.innerWidth < 1120 && img.width > 600) {
-        gElCanvas.width = window.innerWidth * 0.5;
+        gElCanvas.width = window.innerWidth * 0.7;
         gElCanvas.height = gElCanvas.width / DIFF;
     } else {
         gElCanvas.width = img.width;

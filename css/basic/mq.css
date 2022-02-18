@@ -11,9 +11,6 @@
     #about .about-container img {
         max-width: 70vw;
     }
-    .main-editor {
-        flex-direction: column;
-    }
     .main-editor .first-box {
         justify-content: center;
         gap: 10px;
@@ -56,5 +53,19 @@
     }
     body.menu-open .header-content ul {
         transform: translateY(100%) scaleY(1);
+    }
+}
+
+@media (max-width: 1000px) {
+    .main-editor {
+        flex-direction: column;
+    }
+    .editing-tools-container {
+        align-items: center;
+    }
+    .stickers {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
