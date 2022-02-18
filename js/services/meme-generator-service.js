@@ -194,3 +194,13 @@ function saveMeme() {
 function getSavedMemes() {
     return gSavedMemes;
 }
+
+function uploadOwnImg(img) {
+    var url = img.currentSrc;
+    gImgs.push({
+        id: gImgs.length + 1,
+        url,
+        keywords: []
+    })
+    return gImgs[gImgs.length - 1]
+}

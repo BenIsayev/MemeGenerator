@@ -1,6 +1,6 @@
 'use strict'
-
 window.addEventListener("load", init)
+
 var gElCanvas = document.querySelector('canvas')
 var gCtx = gElCanvas.getContext('2d')
 var meme;
@@ -18,7 +18,6 @@ function init() {
     renderKeyWords();
     loadSavedMemes();
 }
-
 
 function renderKeyWords() {
     var keyWords = getKeyWords()
@@ -58,7 +57,7 @@ function renderEditor(id) {
 }
 
 function renderImgCanvas() {
-    var img = new Image()
+    const img = new Image()
     var imgUrl = getImgById(gCurrId).url
     img.src = imgUrl;
     if (window.innerWidth > 1120) {
@@ -73,18 +72,12 @@ function renderImgCanvas() {
     }
     if (isFirstGen) meme.lines[0].location.x = gElCanvas.width / 2
     isFirstGen = false;
-    // img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-        // meme.lines.forEach(line => {
-        //         writeText(line);
-        //     })
-        // }
     gCtx = gElCanvas.getContext('2d')
 }
 
 function reRenderCanvas(id) {
     renderImgCanvas(id);
-    // meme = getMeme()
     meme.lines.forEach(line => {
         writeText(line);
     })
@@ -108,7 +101,6 @@ function renderDataList() {
     }
     document.querySelector('#key-words-container').innerHTML = dataListHTML.join('')
 }
-
 
 function onFilterBy(word) {
     filterBy(word);
@@ -263,4 +255,28 @@ function openSavedMemes() {
     document.querySelector('.main-gallery').classList.remove('hide');
     document.querySelector('#about').classList.remove('hide');
     document.querySelector('.main-editor').classList.add('hide');
+}
+
+function onUploadOwnImg(ev) {
+    loadImageFromInput(ev, addImgToData)
+}
+
+function loadImageFromInput(ev, onImageReady) {
+    var reader = new FileReader()
+
+    reader.onload = function(event) {
+        console.log('onload');
+        var img = new Image()
+            // Render on canvas
+        img.onload = onImageReady.bind(null, img)
+        img.src = event.target.result
+        gImg = img
+    }
+    console.log('after');
+    reader.readAsDataURL(ev.target.files[0])
+}
+
+function addImgToData(img) {
+    var ownImg = uploadOwnImg(img);
+    onImgClick(ownImg.id)
 }

@@ -25,7 +25,6 @@
     </header>
 
     <main class="main-gallery">
-
         <section class="search-area main-layout flex">
             <input list="key-words-container" placeholder="search by topic" oninput="onFilterBy(this.value.toLowerCase())" />
             <section class="key-words flex"></section>
@@ -36,6 +35,8 @@
             </section>
         </section>
     </main>
+
+
     <main class="main-editor flex hide">
         <section class="edited-img flex"><canvas></canvas></section>
         <setion oninput="reRenderCanvas()" class="editing-tools-container flex column">
@@ -77,15 +78,20 @@
                 <button onclick="onAddSticker(this.innerText)">🐶</button>
                 <button onclick="onAddSticker(this.innerText)">🐨</button>
             </section>
-            <section class="sharing">
-                <a href="#" onclick="onDownloadMeme(this)">Download Img</a>
-                <a href="#" onclick="uploadImg()">Upload Img</a>
-                <a href="#" onclick="onSaveImg()">Save Img</a>
+            <section class="sharing flex column">
+                <a href="#" onclick="onDownloadMeme(this)">Download Meme</a>
+                <a href="#" onclick="uploadImg()">Upload Meme</a>
+                <a href="#" onclick="onSaveImg()">Save Meme</a>
+                <div class="upload-file-container">
+                    <input type="file" id="file" class="inputfile" name="image" onchange="onUploadOwnImg(event)" />
+                    <label for="file">Use your own image!</label>
+                </div>
                 <p class="user-msg"></p>
                 <div class="share-container"></div>
             </section>
         </setion>
     </main>
+
 
     <section id="about">
         <section class="about-container flex">
@@ -102,12 +108,13 @@
     </section>
 
 
-
     <footer class="flex column">
         <img src="img/LOGO.png">
         <p>All rights reserved 2022</p>
     </footer>
 
+    <modal>
+    </modal>
 
     <script src="https://kit.fontawesome.com/fc1ffc886f.js" crossorigin="anonymous"></script>
     <script src="js/services/storage-service.js"></script>

@@ -66,12 +66,23 @@
     gap: 20px;
 }
 
-.editing-tools-container .sharing a {
+.editing-tools-container .sharing {
+    gap: 5px;
+}
+
+.editing-tools-container .sharing a,
+.upload-file-container {
+    color: black;
+    width: max-content;
     text-decoration: none;
     background-color: var(--clr1);
     padding: 3px 7px;
     border-radius: 1em;
     box-shadow: 0 0 5px 0px #000;
+}
+
+.upload-file-container input {
+    width: 80px;
 }
 
 .main-editor .stickers {
