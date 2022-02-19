@@ -43,7 +43,7 @@ function renderSavedMemes() {
     var memes = getSavedMemes();
     console.log(memes)
     var memeHTML = memes.map(meme => {
-        return `<img src="${meme}"/>`
+        return `<img onclick="onOpenMeme('${meme}')" src="${meme}"/>`
     })
     document.querySelector('.main-gallery-container').innerHTML = memeHTML.join('');
 }
@@ -282,4 +282,15 @@ function onSetLang(lang) {
     if (lang === 'he') document.body.classList.add('rtl');
     else document.body.classList.remove('rtl');
     doTrans();
+}
+
+function onOpenMeme(img) {
+    document.body.classList.add('opened-modal')
+    document.querySelector('.saved-meme-modal').innerHTML = `<img src=${img}>`
+    document.querySelector('.saved-meme-modal').classList.remove('hide')
+}
+
+function onCloseModal() {
+    document.body.classList.remove('opened-modal')
+    document.querySelector('.saved-meme-modal').classList.add('hide')
 }

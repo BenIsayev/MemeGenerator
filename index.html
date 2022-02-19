@@ -10,6 +10,10 @@
 </head>
 
 <body>
+    <div class="main-screen" onclick="onCloseModal()"></div>
+    <div class="saved-meme-modal hide">
+    </div>
+
     <select class="translate" onchange="onSetLang(this.value)">
         <option value="en">English</option>
         <option value="he">עברית</option>
@@ -115,9 +119,6 @@
         <img src="img/LOGO.png">
         <p data-trans="rights">All rights reserved 2022</p>
     </footer>
-
-    <modal>
-    </modal>
 
     <script src="https://kit.fontawesome.com/fc1ffc886f.js" crossorigin="anonymous"></script>
     <script src="js/services/i18n-service.js"></script>
