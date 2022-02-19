@@ -204,3 +204,23 @@ function uploadOwnImg(img) {
     })
     return gImgs[gImgs.length - 1]
 }
+
+function loadImageFromInput(ev, onImageReady) {
+    var reader = new FileReader()
+
+    reader.onload = function(event) {
+        console.log('onload');
+        var img = new Image()
+            // Render on canvas
+        img.onload = onImageReady.bind(null, img)
+        img.src = event.target.result
+        gImg = img
+    }
+    console.log('after');
+    reader.readAsDataURL(ev.target.files[0])
+}
+
+function addImgToData(img) {
+    var ownImg = uploadOwnImg(img);
+    onImgClick(ownImg.id)
+}

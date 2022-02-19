@@ -17,3 +17,13 @@ button {
     padding: 5px;
     box-shadow: 0 0 5px 0px #000;
 }
+
+.translate {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+}
+
+body.rtl {
+    direction: rtl;
+}

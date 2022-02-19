@@ -10,15 +10,18 @@
 </head>
 
 <body>
-
+    <select class="translate" onchange="onSetLang(this.value)">
+        <option value="en">English</option>
+        <option value="he">עברית</option>
+    </select>
     <header class="">
         <section class="header-content main-layout flex space-between">
             <a href="index.html"><img src="img/LOGO.png"></a>
             <ul class="clean-list flex">
-                <li><a onclick="onRandomMeme()" href="#">I'm Flexible!</a></li>
-                <li><a onclick="openGallery()" href="#">Gallery</a></li>
-                <li><a onclick="openSavedMemes()" href="#">Memes</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a data-trans="flexible" onclick="onRandomMeme()" href="#">I'm Flexible!</a></li>
+                <li><a data-trans="gallery" onclick="openGallery()" href="#">Gallery</a></li>
+                <li><a data-trans="memes" onclick="openSavedMemes()" href="#">Memes</a></li>
+                <li><a data-trans="about" href="#about">About</a></li>
             </ul>
             <button onclick="onToggleMenu()">☰</button>
         </section>
@@ -26,7 +29,7 @@
 
     <main class="main-gallery">
         <section class="search-area main-layout flex">
-            <input list="key-words-container" placeholder="search by topic" oninput="onFilterBy(this.value.toLowerCase())" />
+            <input list="key-words-container" data-trans="search" placeholder="search by topic" oninput="onFilterBy(this.value.toLowerCase())" />
             <section class="key-words flex"></section>
             <datalist id="key-words-container"></datalist>
         </section>
@@ -79,12 +82,12 @@
                 <button onclick="onAddSticker(this.innerText)">🐨</button>
             </section>
             <section class="sharing flex column">
-                <a href="#" onclick="onDownloadMeme(this)">Download Meme</a>
-                <a href="#" onclick="uploadImg()">Upload Meme</a>
-                <a href="#" onclick="onSaveImg()">Save Meme</a>
+                <a href="#" data-trans="download-meme" onclick="onDownloadMeme(this)">Download Meme</a>
+                <a href="#" data-trans="upload-meme" onclick="uploadImg()">Upload Meme</a>
+                <a href="#" data-trans="save-meme" onclick="onSaveImg()">Save Meme</a>
                 <div class="upload-file-container">
                     <input type="file" id="file" class="inputfile" name="image" onchange="onUploadOwnImg(event)" />
-                    <label for="file">Use your own image!</label>
+                    <label data-trans="own-img" for="file">Use your own image!</label>
                 </div>
                 <p class="user-msg"></p>
                 <div class="share-container"></div>
@@ -97,8 +100,8 @@
         <section class="about-container flex">
             <img src="img/me.jpg">
             <section class="about-me">
-                <h2>Ben Isayev</h2>
-                <p>Hi. I am Ben, born and raised in Israel, born on 15th of April 1997, I created this meme generator as a project of a programming course I am at called Coding Academy, I hope you like it!</p>
+                <h2 data-trans="my-name">Ben Isayev</h2>
+                <p data-trans="my-about">Hi. I am Ben, born and raised in Israel, born on 15th of April 1997, I created this meme generator as a project of a programming course I am at called Coding Academy, I hope you like it!</p>
                 <br>
                 <a href="https://www.facebook.com/ben.isayev" target="_blank" class="fa fa-facebook"></a>
                 <a href="https://www.instagram.com/benisayev/" target="_blank" class="fa fa-instagram"></a>
@@ -110,13 +113,14 @@
 
     <footer class="flex column">
         <img src="img/LOGO.png">
-        <p>All rights reserved 2022</p>
+        <p data-trans="rights">All rights reserved 2022</p>
     </footer>
 
     <modal>
     </modal>
 
     <script src="https://kit.fontawesome.com/fc1ffc886f.js" crossorigin="anonymous"></script>
+    <script src="js/services/i18n-service.js"></script>
     <script src="js/services/storage-service.js"></script>
     <script src="js/services/upload-service.js"></script>
     <script src="js/services/utils.js"></script>
