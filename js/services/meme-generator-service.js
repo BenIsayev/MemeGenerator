@@ -144,9 +144,11 @@ function getRandomMeme() {
     onImgClick(getRandomInt(0, gImgs.length - 1))
     meme.lines = [];
     for (var i = 0; i < 2; i++) {
+        var txt = getRandomTxt()
+        var size = (gCtx.measureText(txt).width > gElCanvas.width) ? 10 : 30;
         meme.lines.push({
-            txt: getRandomTxt(),
-            size: 20,
+            txt,
+            size,
             align: 'center',
             strokeColor: 'black',
             fillColor: 'white',

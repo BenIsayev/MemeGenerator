@@ -61,7 +61,7 @@ function renderImgCanvas() {
     if (window.innerWidth > 1120 && img.width > 800) {
         gElCanvas.width = window.innerWidth * 0.5;
         gElCanvas.height = gElCanvas.width / DIFF;
-    } else if (window.innerWidth < 1120 && img.width > 600) {
+    } else if (window.innerWidth < 1120 && img.width > window.innerWidth) {
         gElCanvas.width = window.innerWidth * 0.7;
         gElCanvas.height = gElCanvas.width / DIFF;
     } else {
