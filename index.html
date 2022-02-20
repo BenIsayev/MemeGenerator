@@ -47,7 +47,7 @@
     <main class="main-editor flex hide">
         <section class="edited-img flex"><canvas></canvas></section>
         <setion oninput="reRenderCanvas()" class="editing-tools-container flex column">
-            <input type="text" oninput="onTextWrite(this.value)" name="meme-text">
+            <input type="text" oninput="onTextWrite(this.value)" name="meme-text" id="meme-text">
             <div class="first-box flex space-between">
                 <button onclick="onChangeTextSelected()"><img src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
                 <button onclick="onAddLine();reRenderCanvas()"><img src="img/ICONS/add.png"></button>
@@ -66,8 +66,18 @@
                 <option>Arial</option>
                 <option>Serif</option>
             </select>
-                <input type="color" oninput="onChangeStroke(this.value);reRenderCanvas()"><img src="img/ICONS/text stroke.png">
-                <input type="color" oninput="onChangeFill(this.value);reRenderCanvas()"><img src="img/ICONS/paint-board-and-brush.png">
+                <div class="stroke-color">
+                    <label for="stroke-color">
+                    <img src="img/ICONS/text stroke.png">
+                </label>
+                    <input type="color" id="stroke-color" oninput="onChangeStroke(this.value);reRenderCanvas()">
+                </div>
+                <div class="fill-color">
+                    <label for="fill-color">
+                    <img for="fill-color" src="img/ICONS/paint-board-and-brush.png">
+                </label>
+                    <input type="color" id="fill-color" oninput="onChangeFill(this.value);reRenderCanvas()">
+                </div>
             </div>
             <section class="stickers grid">
                 <button onclick="onAddSticker(this.innerText)">🧠</button>

@@ -84,6 +84,7 @@ function reRenderCanvas(id) {
         writeText(line);
     })
     document.querySelector('[name="meme-text"]').value = meme.lines[meme.selectedLineIdx].txt;
+
     renderSelectedTextRect();
 
 }
@@ -202,6 +203,12 @@ function addEventListeners() {
 }
 
 function onMove(ev) {
+    const position = getEvPos(ev);
+    var currTxt = getClickedText(position)
+    if (!isMoving && currTxt !== -1) {
+        document.body.style.cursor = 'grab';
+    }
+    if (!isMoving && currTxt === -1) document.body.style.cursor = 'default';
     if (!isMoving) return
     var pos = getEvPos(ev)
     meme.lines[meme.selectedLineIdx].location = pos;
@@ -222,9 +229,10 @@ function onDown(ev) {
     reRenderCanvas();
 }
 
-function onUp(ev) {
+function onUp() {
     isMoving = false;
-    document.body.style.cursor = 'default'
+    document.body.style.cursor = 'grab'
+    document.getElementById('meme-text').focus();
 }
 
 function getEvPos(ev) {

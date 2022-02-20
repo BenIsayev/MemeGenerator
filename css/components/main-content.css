@@ -49,12 +49,30 @@
     height: 250px;
 }
 
+.main-gallery-container img:hover {
+    opacity: 85%;
+}
+
 .main-editor button img {
     width: 25px;
 }
 
 .main-editor img {
     width: 25px;
+}
+
+.stroke-color,
+.fill-color {
+    position: relative;
+    display: inline-block;
+}
+
+#stroke-color,
+#fill-color {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    width: 100%;
 }
 
 .main-editor .edited-img {
