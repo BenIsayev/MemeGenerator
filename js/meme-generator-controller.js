@@ -125,6 +125,8 @@ function onImgClick(id) {
     document.querySelector('.main-gallery').classList.add('hide');
     document.querySelector('#about').classList.add('hide');
     document.querySelector('.main-editor').classList.remove('hide');
+    document.querySelector('.main-logo').classList.remove('logo-rotate');
+    setTimeout(() => document.querySelector('.main-logo').classList.add('logo-rotate'), 100)
     meme.selectedImgId = id;
 }
 
@@ -301,4 +303,6 @@ function onOpenMeme(img) {
 function onCloseModal() {
     document.body.classList.remove('opened-modal')
     document.querySelector('.saved-meme-modal').classList.add('hide')
+    document.body.classList.toggle('menu-open')
+
 }

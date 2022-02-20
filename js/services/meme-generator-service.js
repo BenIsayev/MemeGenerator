@@ -135,7 +135,7 @@ function getImgs() {
 function downloadCanvas(elLink) {
     const data = gElCanvas.toDataURL('image/jpeg');
     elLink.href = data;
-    elLink.download = 'my-meme';
+    elLink.download = prompt('Name your meme');
 }
 
 

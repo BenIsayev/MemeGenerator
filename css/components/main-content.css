@@ -51,6 +51,7 @@
 
 .main-gallery-container img:hover {
     opacity: 85%;
+    box-shadow: 0 0 10px;
 }
 
 .main-editor button img {
@@ -73,6 +74,7 @@
     position: absolute;
     left: 0;
     width: 100%;
+    cursor: pointer;
 }
 
 .main-editor .edited-img {
@@ -86,6 +88,7 @@
 
 .editing-tools-container .sharing {
     gap: 5px;
+    align-items: center;
 }
 
 .editing-tools-container .sharing a,

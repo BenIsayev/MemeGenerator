@@ -27,3 +27,24 @@ header ul li a:focus {
 header button {
     display: none;
 }
+
+.main-logo.logo-rotate {
+    animation-name: logo-rotation;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+}
+
+@keyframes logo-rotation {
+    25% {
+        transform: rotateZ(90deg);
+    }
+    50% {
+        transform: rotateZ(180deg);
+    }
+    75% {
+        transform: rotateZ(270deg);
+    }
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
