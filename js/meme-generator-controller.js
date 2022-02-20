@@ -300,7 +300,7 @@ function onOpenMeme(img) {
     document.querySelector('.saved-meme-modal').classList.remove('hide')
 }
 
-function onCloseModal() {
+function onScreenClick() {
     document.body.classList.remove('opened-modal')
     document.querySelector('.saved-meme-modal').classList.add('hide')
     document.body.classList.toggle('menu-open')
